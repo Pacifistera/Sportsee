@@ -1,5 +1,5 @@
 import logo from '../assets/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Nav from './Nav';
 import '../styles/Header.scss';
 
@@ -10,6 +10,7 @@ function Header() {
         <Link to="/">
           <img src={logo} alt="logo Sportsee" />
         </Link>
+
         <Nav />
       </div>
     </header>

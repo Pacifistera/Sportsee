@@ -1,0 +1,11 @@
+header {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0;
+  background-color: #020203;
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
