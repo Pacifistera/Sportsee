@@ -3,7 +3,7 @@
     {
       "id": 12,
       "userInfos": {
-        "firstName": "Karl",
+        "firstName": "Karo",
         "lastName": "Dovineau",
         "age": 31
       },
@@ -97,7 +97,10 @@
       "kind": {
         "1": "cardio",
         "2": "energy",
-        "3": "endurance"
+        "3": "endurance",
+        "4": "strength",
+        "5": "speed",
+        "6": "intensity"
       },
       "data": [
         {
@@ -107,6 +110,22 @@
         {
           "value": 120,
           "kind": 2
+        },
+        {
+          "value": 70,
+          "kind": 3
+        },
+        {
+          "value": 60,
+          "kind": 4
+        },
+        {
+          "value": 20,
+          "kind": 5
+        },
+        {
+          "value": 150,
+          "kind": 6
         }
       ]
     },

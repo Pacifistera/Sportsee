@@ -1,58 +1,38 @@
-import { useState, useEffect } from 'react';
-import {
-  fetchUserData,
-  getUserMainData,
-  getUserActivity,
-  getUserAverageSessions,
-  getUserPerformance,
-} from '../API/dataService';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from 'recharts';
+import GraphOne from './graphOne';
+import GraphTwo from './graphTwo';
+import GraphThree from './graphThree';
+import GraphFour from './graphFour';
 
-const ContentHomeLeft = () => {
-  const [userData, setUserData] = useState(null);
+import '../styles/ContentHomeLeft.scss';
 
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchUserData(12);
+// const ContentHomeLeft = ({ userData }) => {
+//   if (!userData) return <div>Chargement...</div>;
+//   console.log(userData);
+//   return (
+//     <div>
+//       <GraphOne sessions={userData.activityData.sessions} />
+//       <GraphTwo data={userData.averageSessionsData.sessions} />
+//       <GraphThree data={userData.performanceData.data} />
+//       <GraphFour data={userData.mainData.todayScore} />
+//     </div>
+//   );
+// };
 
-      const mainData = getUserMainData(data);
-      const activityData = getUserActivity(data);
-      const averageSessionsData = getUserAverageSessions(data);
-      const performanceData = getUserPerformance(data);
-
-      setUserData({
-        mainData,
-        activityData,
-        averageSessionsData,
-        performanceData,
-      });
-    };
-
-    loadData();
-  }, []);
-
-  if (!userData) return <div>Chargement...</div>;
+const ContentHomeLeft = ({
+  activityData,
+  averageSessionData,
+  performanceData,
+  mainData,
+}) => {
+  if (!activityData || !averageSessionData || !performanceData || !mainData)
+    return <div>Chargement...</div>;
 
   return (
-    <div>
-      <BarChart width={835} height={320} data={userData.activityData.sessions}>
-        <CartesianGrid strokeDasharray="3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-
-        <Bar dataKey="calories" fill="#E60000" />
-        <Bar dataKey="kilogram" fill="#282D30" />
-      </BarChart>
+    <div className="container-graph">
+      <GraphOne sessions={activityData.sessions} />
+      <GraphTwo sessions={averageSessionData.sessions} />
+      <GraphThree data={performanceData.data} kind={performanceData.kind} />
+      <GraphFour score={mainData} />
     </div>
   );
 };

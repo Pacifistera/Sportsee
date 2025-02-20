@@ -1,47 +1,48 @@
-import { useState, useEffect } from 'react';
-import { fetchUserData, getUserMainData } from '../API/dataService';
 import caloriesIcon from '../assets/calories-icon.svg';
 import proteinIcon from '../assets/protein-icon.svg';
 import carbsIcon from '../assets/carbs-icon.svg';
 import fatIcon from '../assets/fat-icon.svg';
+import '../styles/ContentHomeRight.scss';
 
-const ContentHomeRight = () => {
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchUserData(12);
-
-      const mainData = getUserMainData(data);
-
-      setUserData({ mainData });
-    };
-
-    loadData();
-  }, []);
-
+const ContentHomeRight = ({
+  calorieCount,
+  proteinCount,
+  carbohydrateCount,
+  lipidCount,
+}) => {
   return (
-    userData && (
-      <div>
-        <div>
+    calorieCount &&
+    proteinCount &&
+    carbohydrateCount &&
+    lipidCount && (
+      <div className="container-nutrition">
+        <div className="container-nutrition-item">
           <img src={caloriesIcon} alt="calories" />
-          <h2>{userData.mainData.keyData.calorieCount}kCal</h2>
-          <p>Calories</p>
+          <div className="container-nutrition-item-text">
+            <h2>{calorieCount}kCal</h2>
+            <p>Calories</p>
+          </div>
         </div>
-        <div>
+        <div className="container-nutrition-item">
           <img src={proteinIcon} alt="protein" />
-          <h2>{userData.mainData.keyData.proteinCount}g</h2>
-          <p>Protéines</p>
+          <div className="container-nutrition-item-text">
+            <h2>{proteinCount}g</h2>
+            <p>Protéines</p>
+          </div>
         </div>
-        <div>
+        <div className="container-nutrition-item">
           <img src={carbsIcon} alt="carbs" />
-          <h2>{userData.mainData.keyData.carbohydrateCount}g</h2>
-          <p>Glucides</p>
+          <div className="container-nutrition-item-text">
+            <h2>{carbohydrateCount}g</h2>
+            <p>Glucides</p>
+          </div>
         </div>
-        <div>
+        <div className="container-nutrition-item">
           <img src={fatIcon} alt="fat" />
-          <h2>{userData.mainData.keyData.lipidCount}g</h2>
-          <p>Lipides</p>
+          <div className="container-nutrition-item-text">
+            <h2>{lipidCount}g</h2>
+            <p>Lipides</p>
+          </div>
         </div>
       </div>
     )

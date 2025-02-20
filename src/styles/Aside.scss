@@ -1,0 +1,39 @@
+aside {
+  width: 117px;
+  height: 100%;
+  background-color: #020203;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .icons {
+    height: 100%;
+    display: flex;
+    align-items: center; // Centre verticalement
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; // Centre horizontalement
+
+    li {
+      list-style: none;
+      display: flex;
+      justify-content: center; // Centre l'image dans le li
+      align-items: center;
+    }
+  }
+
+  .copyright {
+    p {
+      color: white;
+      writing-mode: vertical-lr; // Texte vertical
+      transform: rotate(180deg); // Rotation du texte
+      font-size: 12px;
+      margin-bottom: 60px; // Espace au-dessus du bas
+    }
+  }
+}

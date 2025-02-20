@@ -1,24 +1,13 @@
-import { useState, useEffect } from 'react';
-import { fetchUserData, getUserMainData } from '../API/dataService';
+import '../styles/HeaderHome.scss';
 
-const HeaderHome = () => {
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchUserData(12);
-      const mainData = getUserMainData(data);
-      setUserData({ mainData });
-    };
-
-    loadData();
-  }, []);
-
+const HeaderHome = ({ mainData }) => {
   return (
-    <div>
-      {userData ? (
+    <div className="container-header-home">
+      {mainData ? (
         <>
-          <h1>Bonjour {userData.mainData.userInfos.firstName}</h1>
+          <h1>
+            Bonjour <span>{mainData.userInfos.firstName}</span>
+          </h1>
           <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
         </>
       ) : (

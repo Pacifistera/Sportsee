@@ -1,0 +1,23 @@
+.container-home {
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 68px 0 0 107px;
+
+  .container-home-content {
+    display: flex;
+    gap: 30px;
+
+    > :first-child {
+      flex: 3; // ContentHomeLeft prend 75% de l'espace
+    }
+
+    > :last-child {
+      flex: 1; // ContentHomeRight prend 25% de l'espace
+    }
+  }
+}

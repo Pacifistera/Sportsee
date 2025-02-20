@@ -1,7 +1,6 @@
 import mockData from '../Mock.json';
 
-async function fetchUserData(userId, useMock = true) {
-  console.log(mockData.USER_ACTIVITY);
+async function fetchUserData(userId, useMock = false) {
   if (useMock) {
     const data = {
       USER_MAIN_DATA: mockData.USER_MAIN_DATA.find((user) => {
@@ -19,13 +18,29 @@ async function fetchUserData(userId, useMock = true) {
     };
     console.log('data', data);
     return data;
-    // return mockData;
   }
 
   try {
-    const response = await fetch(`http://votre-api/user/${userId}`);
-    const data = await response.json();
-    return data;
+    // Récupération de toutes les données en parallèle
+    const [mainData, activity, sessions, performance] = await Promise.all([
+      fetch(`http://localhost:3000/user/${userId}`).then((res) => res.json()),
+      fetch(`http://localhost:3000/user/${userId}/activity`).then((res) =>
+        res.json()
+      ),
+      fetch(`http://localhost:3000/user/${userId}/average-sessions`).then(
+        (res) => res.json()
+      ),
+      fetch(`http://localhost:3000/user/${userId}/performance`).then((res) =>
+        res.json()
+      ),
+    ]);
+
+    return {
+      USER_MAIN_DATA: mainData.data,
+      USER_ACTIVITY: activity.data,
+      USER_AVERAGE_SESSIONS: sessions.data,
+      USER_PERFORMANCE: performance.data,
+    };
   } catch (error) {
     console.error('Erreur lors de la récupération des données:', error);
     return null;

@@ -1,0 +1,21 @@
+.container-header-home {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 500;
+    color: #20253a;
+
+    span {
+      color: #ff0000;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+  }
+}
