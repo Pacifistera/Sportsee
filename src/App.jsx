@@ -1,15 +1,11 @@
 import { Outlet } from 'react-router';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  createHashRouter,
-} from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import Header from './components/Header2';
 import Aside from './components/Aside';
 import Home from './page/Home';
 import './styles/app.scss';
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
