@@ -43,7 +43,9 @@ async function fetchUserData(userId, useMock = false) {
     };
   } catch (error) {
     console.error('Erreur lors de la récupération des données:', error);
-    return null;
+    throw new Error(
+      'Erreur lors de la récupération des données ! Merci de réessayer plus tard.'
+    );
   }
 }
 

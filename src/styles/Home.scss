@@ -2,6 +2,8 @@
   width: 100%;
   max-width: 1024px;
   height: 100%;
+  margin: 0 auto;
+
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -20,4 +22,11 @@
       flex: 1; // ContentHomeRight prend 25% de l'espace
     }
   }
+}
+
+.error-message {
+  color: red;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 100px;
 }
