@@ -1,6 +1,6 @@
 import mockData from '../Mock.json';
 
-async function fetchUserData(userId, useMock = false) {
+async function fetchUserData(userId, useMock = true) {
   if (useMock) {
     const data = {
       USER_MAIN_DATA: mockData.USER_MAIN_DATA.find((user) => {
