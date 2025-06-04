@@ -5,7 +5,7 @@ import Aside from './components/Aside';
 import Home from './page/Home';
 import './styles/app.scss';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Layout />,
