@@ -15,6 +15,10 @@ const router = createHashRouter([
         path: '/',
         element: <Home />,
       },
+      {
+        path: '/404',
+        element: <p>Error404</p>,
+      },
     ],
   },
 ]);
